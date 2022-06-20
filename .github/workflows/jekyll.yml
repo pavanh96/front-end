@@ -25,6 +25,6 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: pavankumar789/gitactions
-        tags: v5
+        tags: front-end
         registry: docker.io
         dockerfile: ./Dockerfile
