@@ -18,3 +18,13 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+    - name:  Login Docker
+      run: |
+        echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "pavankumar789" --password-stdin
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: pavankumar789/gitactions
+        tags: v5
+        registry: docker.io
+        dockerfile: ./Dockerfile
