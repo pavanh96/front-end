@@ -28,3 +28,6 @@ jobs:
         tags: front-end
         registry: docker.io
         dockerfile: ./Dockerfile
+    - name: directory
+      run: |
+         ls -la
